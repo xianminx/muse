@@ -7,7 +7,7 @@
 <script>
     // import HelloWorld from './components/HelloWorld.vue'
     import Key from './Key'
-    const PITCHES = ['A', 'a', 'B', 'C', 'c', 'D', 'd', 'E', 'F', 'f', 'G', 'g']
+    const PITCHES = ['C', 'c', 'D', 'd', 'E', 'F', 'f', 'G', 'g', 'A', 'a', 'B']
     const OCTAVES = [2, 3, 4, 5, 6]
     // const OCTAVES = [1, 4, 9]
     const NOTES = OCTAVES.map(function (o) {
@@ -33,6 +33,6 @@
     }
 </script>
 
-<style>
+<style scoped>
     
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <img src="@/assets/note.png"></img>
     <keyboard></keyboard>
   </div>
 </template>
@@ -23,6 +24,8 @@
 </script>
 
 <style>
+
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

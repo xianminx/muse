@@ -1,5 +1,5 @@
 <template>
-    <div class="m-key" v-on='{ mousedown: press, mouseup: release}' >
+    <div class="m-key" v-on='{ mouseenter: press, mouseleave: release}' >
         <template v-if='keyType == "white"'>
             <div class="white-key" :class="{'m-key-active': active}">
                 <div class='m-note'>{{note}}</div>
@@ -72,8 +72,9 @@
                 if (p === p.toLowerCase()) {
                     p = p.toUpperCase() + '#'
                 }
+                console.log(new Date() + "pressed, playing: " + p +" " + this.octave )
+
                 this.piano.play(p, this.octave, 2); // plays C4 for 2s using the 'piano' sound profile
-                console.log(new Date() + "pressed")
             },
             release: function () {
                 this.active = false;
