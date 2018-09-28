@@ -1,31 +1,28 @@
 <template>
   <div id="app">
-      <img src="@/assets/note.png"></img>
+    <player></player>
     <keyboard></keyboard>
   </div>
 </template>
 
 <script>
-  // import HelloWorld from './components/HelloWorld.vue'
-  import Keyboard from './components/Keyboard'
-
-  export default {
-    name: 'app',
-    data: function () {
-      return {
-      }
-    },
-    components: {
-      Keyboard
-    },
-    created() {
-    },
-  }
+// import HelloWorld from './components/HelloWorld.vue'
+import Keyboard from './components/Keyboard'
+import Player from './components/Player.vue'
+export default {
+  name: 'app',
+  data: function () {
+    return {}
+  },
+  components: {
+    Keyboard,
+    Player
+  },
+  created () {}
+}
 </script>
 
 <style>
-
-
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

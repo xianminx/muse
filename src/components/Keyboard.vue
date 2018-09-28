@@ -5,34 +5,34 @@
 </template>
 
 <script>
-    // import HelloWorld from './components/HelloWorld.vue'
-    import Key from './Key'
-    const PITCHES = ['C', 'c', 'D', 'd', 'E', 'F', 'f', 'G', 'g', 'A', 'a', 'B']
-    const OCTAVES = [2, 3, 4, 5, 6]
-    // const OCTAVES = [1, 4, 9]
-    const NOTES = OCTAVES.map(function (o) {
-            return PITCHES.map(function (p) {
-                return p + o;
-            })
-        })
-        .reduce((a, b) => a.concat(b), []);
+// import HelloWorld from './components/HelloWorld.vue'
+import Key from './Key'
+const PITCHES = ['C', 'c', 'D', 'd', 'E', 'F', 'f', 'G', 'g', 'A', 'a', 'B']
+const OCTAVES = [2, 3, 4, 5, 6]
+// const OCTAVES = [1, 4, 9]
+const NOTES = OCTAVES.map(function (o) {
+  return PITCHES.map(function (p) {
+    return p + o
+  })
+})
+  .reduce((a, b) => a.concat(b), [])
 
-    export default {
-        name: 'keyboard',
-        data: function () {
-            return {
-                all_notes: NOTES
-            }
-        },
-        components: {
-            Key
-        },
-        created() {
-            console.log(NOTES)
-        },
+export default {
+  name: 'keyboard',
+  data: function () {
+    return {
+      all_notes: NOTES
     }
+  },
+  components: {
+    Key
+  },
+  created () {
+    console.log(NOTES)
+  }
+}
 </script>
 
 <style scoped>
-    
+
 </style>

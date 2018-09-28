@@ -1,4 +1,5 @@
-module.exports ={
-    baseUrl: '/muse',
-    outputDir: 'docs'
+module.exports = {
+  baseUrl: './',
+  outputDir: 'docs',
+  lintOnSave: false
 }
