@@ -8,7 +8,7 @@
     <template v-else>
       <div class="black-key">
         <div class="black-key-internal" :class="{'m-key-active': active}">
-          <div class='m-note'>{{note}}</div>
+          <div class='m-note'>{{note | normalize}}</div>
         </div>
       </div>
     </template>
@@ -16,11 +16,7 @@
 </template>
 
 <script>
-import {
-  Synth,
-  AudioSynth,
-  AudioSynthInstrument
-} from '@/libs/audiosynth.js'
+import * as Tone from 'tone'
 
 export default {
   name: 'Key',
@@ -32,7 +28,7 @@ export default {
       freqency: 0,
       keyType: 'white',
       active: false,
-      piano: null
+      synth: null
     }
   },
   props: {
@@ -41,19 +37,30 @@ export default {
       default: 'C1'
     }
   },
+  filters: {
+    normalize: function (value) {
+      if (value.includes('#')) {
+        value = value.replace('#', '')
+        value = value.toLowerCase()
+      }
+      return value
+    }
+  },
   computed: {},
   created () {
     this.init()
   },
   methods: {
     init: function () {
-      [this.pitch, this.octave] = this.note.split('')
-      this.octave = parseInt(this.octave)
+      let split = this.note.length - 1
+      this.pitch = this.note.slice(0, split)
+      this.octave = parseInt(this.note.slice(split, split + 1))
       if (isNaN(this.octave)) {
         this.octave = 4
       }
-      this.keyType = (this.pitch === this.pitch.toLowerCase()) ? 'black' : 'white'
-      this.piano = Synth.createInstrument('piano')
+      this.keyType = this.note.includes('#') ? 'black' : 'white'
+
+      this.synth = new Tone.Synth().toMaster()
     },
     kick: function (key, interval = 500) {
       this.press(key)
@@ -64,18 +71,13 @@ export default {
     },
     press: function (key) {
       this.active = true
-      // requires a conversion for audiosynth library.
-      var p = this.pitch
-      if (p === p.toLowerCase()) {
-        p = p.toUpperCase() + '#'
-      }
-
-      this.piano.play(p, this.octave, 2) // plays C4 for 2s using the 'piano' sound profile
+      let duration = '4n'
+      this.synth.triggerAttack(this.note)
     },
     release: function () {
       this.active = false
+      this.synth.triggerRelease()
     }
-
   }
 }
 </script>

@@ -36,16 +36,6 @@
       "@vue/standard"
     ],
     "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "libs/audiosynth.js"
-        ],
-        "rules": {
-          "no-unused-expressions": "off"
-        }
-      }
-    ],
     "parserOptions": {
       "parser": "babel-eslint"
     }
